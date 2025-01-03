@@ -10,7 +10,8 @@ import { clearCart } from "../../redux/features/cartSlice";
 
 const MyOrders = () => {
   const { data, isLoading, error } = useMyOrdersQuery();
-
+  console.log(data);
+  
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ const MyOrders = () => {
       rows: [],
     };
 
-    data?.orders?.forEach((order) => {
+    data?.order?.forEach((order) => {
       orders.rows.push({
         id: order?._id,
         amount: `$${order?.totalAmount}`,
