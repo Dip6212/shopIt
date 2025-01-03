@@ -14,10 +14,10 @@ process.on("uncaughtException", (err) => {
   console.log("shutting down the servers due to uncaught exceptions");
   process.exit(1);
 });
-if(process.env.NODE_ENV!=="PRODUCTION"){
+dotenv.config({ path: "backend/config/config.env" });
+// if(process.env.NODE_ENV!=="PRODUCTION"){
 
-  dotenv.config({ path: "backend/config/config.env" });
-}
+// }
 // connecting databse
 
 connectDatabase();

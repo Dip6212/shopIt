@@ -1,4 +1,0 @@
-[submodule "/frontend"]
-	ignore = untracked
-[submodule "<path>"]
-	ignore = untracked
