@@ -44,33 +44,38 @@ console.log("filteredProductsCount:", data?.filteredProductsCount);
     <>
       <MetaData title={"Buy Best Products Online"} />
       <div className="row">
-        {keyword && (
-          <div className="col-6 col-md-3 mt-5">
-            <Filters />
-          </div>
-        )}
-        <div className={keyword ? "col-6 col-md-9" : "col-6 col-md-12"}>
-          <h1 id="products_heading" className="text-secondary">
-            {keyword
-              ? `${data?.products?.length} Products found with keyword: ${keyword}`
-              : "Latest Products"}
-          </h1>
+  {keyword && (
+    <div className="col-12 col-md-3 mt-5">
+      <Filters />
+    </div>
+  )}
+  <div className={keyword ? "col-12 col-md-9 mt-4 mt-md-0" : "col-12 mt-4"}>
+    <h1 id="products_heading" className="text-secondary text-center">
+      {keyword
+        ? `${data?.products?.length} Products found with keyword: ${keyword}`
+        : "Latest Products"}
+    </h1>
 
-          <section id="products" className="mt-5">
-            <div className="row">
-              {data?.products?.map((product) => (
-                <ProductItem product={product} columnSize={columnSize} />
-              ))}
-            </div>
-          </section>
-
-          <CustomPagination
-            resPerPage={data?.resPerPage}
-            filteredProductsCount={data?.filteredProductsCount}
+    <section id="products" className="mt-5">
+      <div className="row gy-4">
+        {data?.products?.map((product) => (
+          <ProductItem
+            product={product}
+            columnSize="col-6 col-sm-6 col-md-4 col-lg-3"
           />
-          
-        </div>
+        ))}
       </div>
+    </section>
+
+    <div className="d-flex justify-content-center mt-4">
+      <CustomPagination
+        resPerPage={data?.resPerPage}
+        filteredProductsCount={data?.filteredProductsCount}
+      />
+    </div>
+  </div>
+</div>
+
     </>
   );
 };
